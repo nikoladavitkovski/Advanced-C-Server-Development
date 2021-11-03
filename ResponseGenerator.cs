@@ -10,7 +10,8 @@ namespace Sedc_Server_Try_One
 
         internal Response GenerateResponse(Request request)
         {
-            return new Response { Message = $"Hi, I'm a SEDC Server, nice to meet you. You have used the {request.Method} method" };
+            return new Response { Message = $"Hi, I'm a SEDC Server, nice to meet you. You have used the {request.Method} method",
+             Status = Status.OK};
         }
     }
 }
