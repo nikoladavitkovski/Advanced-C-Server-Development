@@ -24,13 +24,6 @@ namespace Sedc_Server_Try_One
                 Method = rlMatch.Groups[1].Value,
                 Address = rlMatch.Groups[2].Value
             };
-            
-
-            foreach(var header in headerLines)
-            {
-                var hlMatch = hlRegex.Match(header);
-                result.Headers.Add(hlMatch.Groups[1].Value, hlMatch.Groups[2].Value);
-            };
             return result;
         }
     }

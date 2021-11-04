@@ -14,19 +14,10 @@ namespace Sedc_Server_Try_One
 
         public Dictionary<string, string> Headers { get; set; } = new Dictionary<string, string>();
 
-        private string HeaderRequest(int padBy = 0)
+        private string HeaderRequest()
         {
             StringBuilder sb = new StringBuilder();
-            foreach(var item in Headers)
-            {
-                sb.Append($"{string.Empty.PadLeft(padBy, ' ')}{item.Key}: {item.Value}\r\n");
-            }
             return sb.ToString();
-        }
-
-        public override string ToString()
-        {
-            return $@"Request{Method}{Address}{Headers : HeaderString(4)}";
         }
     }
 }
