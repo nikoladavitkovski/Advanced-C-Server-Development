@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sedc_server_Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,14 @@ namespace Sedc_Server_Try_One
     {
         public string Message { get; set; }
 
-        public int Status { get; set; }
+        public string Address { get; set; }
+
+        public Status Status { get; set; }
+
+        public Response()
+        {
+            Status = Status.ServerError;
+        }
+
     }
 }
