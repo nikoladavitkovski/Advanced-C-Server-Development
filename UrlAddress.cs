@@ -6,9 +6,9 @@ namespace Sedc_Server_Try_One
 {
     public record UrlAddress
     {
-        public List<string> paths;
-
-        public ReadOnlyCollection<string> Path
+        private readonly string[] paths = new string[0];
+       
+        public IList<string> Path
         {
             get
             {
@@ -27,9 +27,7 @@ namespace Sedc_Server_Try_One
         }
         public UrlAddress(string url)
         {
-
             var parts = url.Split('/');
-            paths = parts.Skip(1).ToList();
             var query = parts.Last();
             var queryParts = query.Split('?');
             if(queryParts.Length > 1)
@@ -50,13 +48,23 @@ namespace Sedc_Server_Try_One
         public override string ToString()
         {
             var path = string.Join(',', paths);
-            var query = path.Skip(1).ToList();
-            foreach(var pat in paths)
+            var query = string.Join("&", parameters.Select(kvp => $"{kvp.Key}{kvp.Value}"));
+            if (string.IsNullOrEmpty(query))
             {
-                var keyValue = query.ToString();
-                return keyValue;
+                return path;
             }
-            return path;
+            return $"{path}{query}";
+        }
+
+        public static string TestAddress()
+        {
+            Request request = new Request();
+            string UrlAddress = string.Join('?', $"{request.Address}");
+            if (string.IsNullOrEmpty(UrlAddress))
+            {
+                return null;
+            }
+            return UrlAddress;
         }
     }
 }

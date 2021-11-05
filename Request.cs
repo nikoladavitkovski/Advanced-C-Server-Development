@@ -19,5 +19,15 @@ namespace Sedc_Server_Try_One
             StringBuilder sb = new StringBuilder();
             return sb.ToString();
         }
+
+        public override string ToString()
+        {
+            return $@"Request:
+  Method: { Method}
+        Address: { Address}
+        Headers:
+            { "HeaderString(4)"}
+            ";
+        }
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Sedc_Server_Try_One
 {
-    internal class Response
+    internal class Response : IResponse
     {
         public string Message { get; set; }
 
-        public string Address { get; set; }
+        public UrlAddress Address { get; set; }
 
         public Status Status { get; set; }
 
